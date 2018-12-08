@@ -168,6 +168,24 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     };
 
+    Thread thread = new Thread() {
+    @Override
+    public void run() {
+        try {
+            while (!thread.isInterrupted()) {
+                Thread.sleep(1000);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        lontxt.setText(one);
+                        lattxt.setText(two);
+                    }
+                });
+            }
+        } catch (InterruptedException e) {}
+    }
+    };
+
     public static void updateTextView1(String toThis) {
         lontxt.setText(toThis);
     }
@@ -209,6 +227,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         lvNewDevices.setOnItemClickListener(MainActivity.this);
+        thread.start();
 
 
         btnONOFF.setOnClickListener(new View.OnClickListener() {

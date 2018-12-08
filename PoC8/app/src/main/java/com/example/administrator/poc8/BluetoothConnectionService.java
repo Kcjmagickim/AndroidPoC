@@ -282,8 +282,8 @@ public class BluetoothConnectionService {
                             }
                         }
                         i++;
-                        MainActivity.updateTextView2(lat);
-                        MainActivity.updateTextView2(lon);
+                        MainActivity.one = lat;
+                        MainActivity.two = lon;
                     }
                 } catch (IOException e) {
                     Log.e(TAG, "write: Error reading Input Stream. " + e.getMessage() );
